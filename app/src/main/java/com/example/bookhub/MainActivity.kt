@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.FrameLayout
+import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.cardview.widget.CardView
@@ -36,6 +37,16 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+
+        navigationView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.dashboard -> Toast.makeText(this,"Dashboard clicked",Toast.LENGTH_SHORT).show()
+                R.id.favourites -> Toast.makeText(this,"Favourites clicked",Toast.LENGTH_SHORT).show()
+                R.id.about_app -> Toast.makeText(this,"About clicked",Toast.LENGTH_SHORT).show()
+                R.id.profile -> Toast.makeText(this,"Profile clicked",Toast.LENGTH_SHORT).show()
+            }
+            return@setNavigationItemSelectedListener true
+        }
 
     }
 
