@@ -40,7 +40,11 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.dashboard -> Toast.makeText(this,"Dashboard clicked",Toast.LENGTH_SHORT).show()
+                R.id.dashboard -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.frame,DashboardFragment())
+                        .commit()
+                    drawerLayout.closeDrawers()
+                }
                 R.id.favourites -> Toast.makeText(this,"Favourites clicked",Toast.LENGTH_SHORT).show()
                 R.id.about_app -> Toast.makeText(this,"About clicked",Toast.LENGTH_SHORT).show()
                 R.id.profile -> Toast.makeText(this,"Profile clicked",Toast.LENGTH_SHORT).show()
